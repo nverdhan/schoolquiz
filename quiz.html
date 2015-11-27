@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="QuizApp">
+<head>
+	<title>Books and Authors Quiz</title>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div ng-controller="QuestionBlockController" ng-show="ifQuizInitialized && !ifQUizEnded && ifQuizStarted">
+		<!-- <div class="quiz-status">{{statustext}}</div> -->
+		<div class="question-block-full animate-show" id="questionBlockFull{{$index}}" ng-repeat="q in quiz" ng-show="q.arrayindex == activeQuestion">
+			<div class="question">
+				{{$index+1}}. {{q.question}}
+			</div>
+			<div class="options">
+				<ul>
+					<li ng-repeat="option in q.options" ng-click="checkIfCorrect(q.arrayindex, option)" ng-class="{unanswered: option.state=='unanswered', correct: option.state=='correct', incorrect: option.state=='incorrect'}">{{option.label}}. {{option.text}}</li>
+				</ul>
+			</div>
+			<div class="controls">
+				<div><button ng-click="previousQuestion()">Previous</button></div>
+				<div><button ng-click="showCorrectAns(q.arrayindex)">Show Correct Answer</button></div>
+				<div><button ng-click="resetQuestion(q.arrayindex)">Reset</button></div>
+				<div><button ng-click="nextQuestion()">Next Question</button></div>
+			</div>
+		</div>
+	</div>
+	<div ng-controller="QuizController">
+		<div class="top-msg"> 
+			<div class="kvbanka">
+				<img src="kvslogo.jpg" style="width:100px;">
+				<span>Library, Kendriya Vidyalaya, Banka</span>
+			</div>
+			<div class="quiz-name" id="quizName" ng-bind-html="getQuizName() | unsafe"></div>
+		</div>
+		<div class="quiz-initialize" ng-show = "!ifQuizInitialized">
+			<div class="controls">
+				<div><h2 style="color:white;"> {{selectedQuestions.length}} questions selected </h2></div>
+				<div><button ng-click='startQuiz()'> Start Quiz </button></div>
+			</div>
+			<div class="quiz-set-name">
+				Enter Quiz Name : <input type="text" name="userName" ng-model="kvquiz.name" placeholder="Enter quiz name here" ng-keyup="SetQuizName()" />
+				Show Answers here: <input type="checkbox" ng-model="kvquiz.showans">
+			</div>
+			<div class="question-block-small" ng-repeat="q in quizjson" ng-click="toggleSelect(q.number)" ng-class="q.selected ? 'selected' : 'not-selected'">
+				<div class="question">{{q.question}}</div>
+				<div class="options">
+					<ul>
+						<li>A. {{q.opta}}</li>
+						<li>B. {{q.optb}}</li>
+						<li>C. {{q.optc}}</li>
+						<li>D. {{q.optd}}</li>
+					</ul>
+				</div>
+				<div class="correctans" ng-show="kvquiz.showans"> Correct Answer: {{q.correctans}} </div>
+			</div>
+			<div style="height:100px;"></div>
+		</div>
+		<div class="quiz-end" ng-show="ifQuizEnded">
+			<h1> Quiz Ended </h1>
+			<h2> Thank you! </h2>
+			<button ng-click="restartQuiz()">Restart Quiz </button>
+		</div>
+	</div>
+	
+
+</body>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="angular-animate.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</html>

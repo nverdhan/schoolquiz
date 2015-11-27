@@ -1,0 +1,131 @@
+body {
+	/*font-family: 'Roboto Slab', serif;*/
+}
+.question-block-full {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 50px;
+    font-size: 30px;
+    box-sizing: border-box;
+    margin-top: 100px;
+}
+.options ul{
+	list-style: none;
+}
+.question-block-full .options ul>li{
+	margin: 25px auto;
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: black;
+    background-color: rgba(0,0,0,0);
+    transition: all 300ms ease;
+}
+.question-block-full .options ul>li.correct{
+	color: white;
+	background-color: #4CAF50;
+}
+.question-block-full .options ul>li.incorrect{
+	color: white;
+	background-color: #F77066;
+}
+.question-block-full .options ul>li.unanswered{
+	color: black;
+	background-color: rgba(255,255,255,0.4);
+}	
+.controls {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #3F51B5;
+    box-shadow: 0 -2px 5px #333;
+}
+button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 12px;
+    background-color: #4CAF50;
+    box-shadow: none;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.question-block-small {
+    margin: 10px 5px;
+    border: 1px solid #F77066;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 300ms ease;
+}
+.question-block-small.selected{
+	color: white;
+	background-color: #4CAF50;
+}
+.top-msg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 2px 10px #333;
+    z-index: 1;
+    height: 100px;
+    font-size: 20px;
+}
+.kvbanka{
+	position: relative;
+}
+.kvbanka span{
+	position: absolute;
+    left: 105px;
+    top: 35px;
+    width: max-content;
+}
+.quiz-initialize {
+    position: relative;
+    top: 100px;
+    left: 0;
+    margin: 0 auto;
+}
+.quiz-set-name input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid#ddd;
+    margin: 5px auto;
+}
+.quiz-end {
+    position: relative;
+    top: 100px;
+    text-align: center;
+}
+.animate-show {
+  left: 0;
+}
+
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  left: 1000px;
+}
+.quiz-name{
+	padding: 5px;
+}
